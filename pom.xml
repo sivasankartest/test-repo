@@ -13,6 +13,19 @@
       <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
   </properties>
 
+<distributionManagement>
+  <repository>
+    <id>RepoR</id>
+    <!-- CHANGE HERE by your team nexus server -->
+    <url>http://192.168.53.10:8081/repository/RepoR/</url>
+  </repository>
+  <snapshotRepository>
+    <id>RepoS</id>
+    <!-- CHANGE HERE by your team nexus server -->
+    <url>http://192.168.53.10:8081/repository/RepoS/</url>
+  </snapshotRepository>
+</distributionManagement>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
