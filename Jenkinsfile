@@ -4,7 +4,7 @@ node {
    checkout scm
    }
    stage('build image') {
-   app = docker.build("goyalzz/ubuntu-java-8-maven-docker-image")
+   app = docker.build("getintodevops/hellonode")
    }
    stage('Test image') {
    app.inside {
