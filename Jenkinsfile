@@ -1,20 +1,14 @@
-pipeline {
-     agent any
-   stages {
-      stage ('compile stage') {
-	    steps {
-		sh 'mvn clean compile'
-	}
-	}
-	stage ('testing stage') {
-	   steps {
-	   	   sh 'mvn test'
-	   	   }
-	   }
-	stage ('deployment') {
-	   steps {
-	   	   sh 'mvn deploy'
-	   	   }
-	   }
-	  }
-	}
+node {
+   def app
+   stage('Clone repository') {
+   checkout scm
+   }
+   stage('build image') {
+   app = docker.build("getintodevops/hellonode")
+   }
+   stage('Test image') {
+   app.inside {
+      sh 'echo "tests passed"'
+      }
+     }
+   }
