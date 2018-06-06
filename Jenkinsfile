@@ -1,7 +1,9 @@
 pipeline {
 	agent{
-		docker.build {dockerfile}
-	}	     
+		dockerfile {
+        filename 'dockerfile'
+	}
+	}
   stages {
     stage ('clean and compile') {
 	  steps {
