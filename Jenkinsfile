@@ -16,11 +16,13 @@ pipeline {
 	   	   sh 'mvn deploy'
 	   	   }
 	   }
-	stage('SonarQube analysis') {
-    withSonarQubeEnv('sonarqube') {
-      // requires SonarQube Scanner for Maven 3.2+
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-	  }
-	}
+	try {
+stage("Building SONAR ...") {
+sh './gradlew clean sonarqube'
+}
+} catch (e) {emailext attachLog: true, body: 'See attached log', subject: 'BUSINESS Build Failure', to: 'abc@gmail.com'
+step([$class: 'WsCleanup'])
+return
+}
    }
 }
