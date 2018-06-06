@@ -1,5 +1,7 @@
 pipeline {
     agent { dockerfile true }
+	docker.build {dockerfile}
+	
   stages {
     stage ('clean and compile') {
 	  steps {
