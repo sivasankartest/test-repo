@@ -25,16 +25,6 @@
     <url>http://192.168.23.10:8081/repository/maven-snapshots/</url>
   </snapshotRepository>
 </distributionManagement>
-dependencies {
-classpath "org.sonarsource.scanner.gradle: sonarqube-gradle-plugin:2.5"
-}
-	sonarqube {
-properties {
-property "sonar.host.url", http://192.168.23.10:8082/sonar/ //  url is your sonar server
-property "sonar.projectName", "test-maven-project"   //  this name will appear in dashboard
-property "sonar.projectKey", "projectKey" // It sould be a keybased on this report is created
-property "sonar.groovy.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"    }
-}
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
