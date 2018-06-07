@@ -2,7 +2,6 @@ pipeline {
 	agent{
   checkout scm
   env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
-stages {
     stage ('Package') {
     dir('webapp') {
       sh 'mvn clean package -DskipTests'
