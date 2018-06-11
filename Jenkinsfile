@@ -8,7 +8,7 @@ node {
    }
    stage('Test image') {
    app.inside {
-      sh 'echo "tests passed"'
+      sh 'git clone https://github.com/sivasankartest/test-repo.git'
       }
      }
    }
