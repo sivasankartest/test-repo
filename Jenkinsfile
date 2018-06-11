@@ -1,11 +1,14 @@
-pipeline {
-	node
-	{
-checkout scm
-    def dockerfile = 'dockerfile'
-    def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./dockerfiles") 
-
-	testImage.inside {
-        sh 'make test'
-}
-}
+node {
+   def app
+   stage('Clone repository') {
+   checkout scm
+   }
+   stage('build image') {
+   app = docker.build("sivasankartest/test-repo")
+   }
+   stage('Test image') {
+   app.inside {
+      sh 'echo "tests passed"'
+      }
+     }
+   }
