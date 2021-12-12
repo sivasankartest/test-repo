@@ -14,12 +14,12 @@ pipeline {
     stage('build && sonarqube analysis') {
       steps {
         container('java-build-tools') {
-	withSonarQubeEnv(sonar) {
-	script {
-	  sh '''
-	  mvn clean package sonar:sonar -Dsonar.projectKey=java-petclinic
+	  withSonarQubeEnv(sonar) {
+	    script {
+	      sh '''
+	      mvn clean package sonar:sonar -Dsonar.projectKey=java-petclinic
 	  
-	  '''
+	    '''
       }
      }
     }
