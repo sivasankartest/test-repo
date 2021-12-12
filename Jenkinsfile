@@ -14,11 +14,10 @@ pipeline {
     stage('build && sonarqube analysis') {
       steps {
         container('java-build-tools') {
-	def mvn = tool 'Default Maven';
 	withSonarQubeEnv(sonar) {
 	script {
 	  sh '''
-	  ${mvn} clean package sonar:sonar -Dsonar.projectKey=java-petclinic
+	  mvn clean package sonar:sonar -Dsonar.projectKey=java-petclinic
 	  
 	  '''
       }
