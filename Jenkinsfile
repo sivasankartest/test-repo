@@ -17,7 +17,7 @@ pipeline {
 	  withSonarQubeEnv('sonar') {
 	    script {
 	      sh '''
-	      mvn clean package sonar:sonar -Dsonar.projectKey=java-petclinic
+	      mvn clean package sonar:sonar -Dsonar.projectKey=java-petclinic  -Dsonar.host.url=http://172.16.16.239:9000 -Dsonar.login=1bd83c2595d78fd6d47ea32158808d95285aae4f
 	  
 	    '''
       }
